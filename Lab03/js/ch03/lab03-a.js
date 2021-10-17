@@ -23,7 +23,23 @@ function changeSqu(){
 }
 
 function changeDir(){
+	clearTimeout(time);
 	direction *= -1;
+}
+
+function fast(){
+	clearTimeout(time);
+	delay /= 2;
+}
+
+function slow(){
+	clearTimeout(time);
+	delay *= 2;
+}
+
+function speed(num){
+	clearTimeout(time);
+	delay = num;
 }
 
 function initRotSquare(){
@@ -56,20 +72,6 @@ function initRotSquare(){
 
 	thetaLoc = gl.getUniformLocation( program, "theta" );
 
-	document.getElementById( "controls" ).onclick = function( event ){
-		switch( event.target.index ){
-			case 0:
-				direction *= -1;
-				break;
-			case 1:
-				delay /= 2.0;
-				break;
-			case 2:
-				delay *= 2.0;
-				break;	
-		}
-	};
-
 	renderSquare();
 }
 
@@ -90,4 +92,5 @@ function renderSquare(){
 
 	// update and render
 	time = setTimeout( function (){ requestAnimFrame( renderSquare ); }, delay );
+	console.log(delay);
 }

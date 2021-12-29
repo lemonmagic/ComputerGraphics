@@ -317,7 +317,7 @@ window.onload = function initWindow() {
     alert("WebGL isn't available");
   }
 
-  gl.clearColor(0.0, 1.0, 1.0, 1.0);
+  gl.clearColor(0.0, 0.0, 1.0, 1.0);
   gl.enable(gl.DEPTH_TEST);
 
   program = initShaders(gl, "vertex-shader", "fragment-shader");
@@ -338,9 +338,9 @@ function initInterface() {
   fileInput.addEventListener("change", function (event) {
     var file = fileInput.files[0];
     var reader = new FileReader();
-
     reader.onload = function (event) {
       meshdata = reader.result;
+      console.log(meshdata);
       initObj();
     }
     reader.readAsText(file);
